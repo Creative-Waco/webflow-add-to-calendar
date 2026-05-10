@@ -1,0 +1,64 @@
+<!--
+  Creative Waco — Event template embed (Webflow: Embed element → paste HTML)
+
+  1. Upload add-to-calendar.js and add-to-calendar.css as Site Assets (or host on your CDN).
+  2. Site settings → Custom Code → Footer (before </body>), load once sitewide:
+
+     <link rel="stylesheet" href="YOUR_ASSET_URL/add-to-calendar.css">
+     <script src="YOUR_ASSET_URL/add-to-calendar.js" defer></script>
+
+  3. On the Event CMS template, add this Embed and bind each data-cw-* attribute to the
+     matching CMS field (Attribute panel → Add attribute):
+
+     data-cw-title       ← Name
+     data-cw-start       ← Start Date Time (field slug: start-date-time)
+     data-cw-end         ← End Date Time (end-date-time) — optional; defaults +1 hour
+     data-cw-location    ← location
+     data-cw-description ← short-description or Plain Text excerpt (Rich Text in attributes is unreliable)
+     data-cw-url         ← Current page URL or Link field (canonical event URL)
+     data-cw-uid-slug    ← Slug (stable UID for the .ics file)
+
+  Date/time values must parse as ISO 8601 in the attribute (Webflow DateTime bindings
+  usually output a valid machine-readable string). If yours differ, use a Plain Text
+  field formatted as ISO or Unix ms in data-cw-start / data-cw-end.
+-->
+
+<div
+  class="cw-cal"
+  data-cw-add-to-calendar
+  data-cw-title=""
+  data-cw-start=""
+  data-cw-end=""
+  data-cw-location=""
+  data-cw-description=""
+  data-cw-url=""
+  data-cw-uid-slug=""
+>
+  <button
+    type="button"
+    class="cw-cal__trigger"
+    aria-expanded="false"
+    aria-haspopup="true"
+  >
+    Add to calendar
+  </button>
+  <ul class="cw-cal__panel" role="menu">
+    <li role="none">
+      <a role="menuitem" data-cw-cal-link="google" href="#" target="_blank" rel="noopener noreferrer">Google Calendar</a>
+    </li>
+    <li role="none">
+      <a role="menuitem" data-cw-cal-link="outlook" href="#" target="_blank" rel="noopener noreferrer">Outlook (Microsoft 365)</a>
+    </li>
+    <li role="none">
+      <a role="menuitem" data-cw-cal-link="outlook-live" href="#" target="_blank" rel="noopener noreferrer">Outlook.com</a>
+    </li>
+    <li role="none">
+      <a role="menuitem" data-cw-cal-link="yahoo" href="#" target="_blank" rel="noopener noreferrer">Yahoo Calendar</a>
+    </li>
+    <li aria-hidden="true" class="cw-cal__sep"></li>
+    <li role="none">
+      <a role="menuitem" href="#" data-cw-cal-link="ics">Apple Calendar — download .ics</a>
+    </li>
+    <li class="cw-cal__hint">Works in Apple Calendar, Gmail app, and most desktop clients.</li>
+  </ul>
+</div>
