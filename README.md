@@ -24,28 +24,25 @@ Small static assets for the Event CMS template: **Google Calendar**, **Outlook**
 
 ## Git remote (GitHub)
 
-This directory is a **standalone git repository** so you can push only these files to a public or private GitHub repo and use **raw** URLs in Webflow.
+This directory is a **standalone git repository**. The canonical remote is the **Creative Waco** organization (not Tortoise & Hare):
+
+**Repository:** [github.com/Creative-Waco/webflow-add-to-calendar](https://github.com/Creative-Waco/webflow-add-to-calendar)
+
+Clone or update:
 
 ```bash
-cd "path/to/Workspace/website/embed"
-git status   # should be clean after commit
-
-# Create an empty repo on GitHub, then:
-git remote add origin https://github.com/ORG/REPO.git
-git branch -M main
-git push -u origin main
+git clone https://github.com/Creative-Waco/webflow-add-to-calendar.git
+cd webflow-add-to-calendar
 ```
 
-**Raw file URLs** (replace `ORG`, `REPO`, and commit ref as needed; `main` may work for `refs/heads/main` on GitHub):
+**Raw file URLs** for Webflow Custom Code (pin a **commit SHA** or **release tag** for production stability):
 
-- `https://raw.githubusercontent.com/ORG/REPO/main/add-to-calendar.js`
-- `https://raw.githubusercontent.com/ORG/REPO/main/add-to-calendar.css`
+- `https://raw.githubusercontent.com/Creative-Waco/webflow-add-to-calendar/main/add-to-calendar.js`
+- `https://raw.githubusercontent.com/Creative-Waco/webflow-add-to-calendar/main/add-to-calendar.css`
 
-Use those in the Webflow Custom Code block. Pin to a **commit SHA** or **tag** for stable production URLs.
+**jsDelivr** (optional CDN in front of GitHub):
 
-**jsDelivr** (optional, CDN in front of GitHub):
-
-- `https://cdn.jsdelivr.net/gh/ORG/REPO@main/add-to-calendar.js`
+- `https://cdn.jsdelivr.net/gh/Creative-Waco/webflow-add-to-calendar@main/add-to-calendar.js`
 
 ## License
 
