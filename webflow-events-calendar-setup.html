@@ -1,0 +1,71 @@
+<!--
+================================================================================
+CREATIVE WACO — Add to calendar (Webflow Events template)
+
+You build the BUTTON in Webflow (visual). CMS bindings live on a parent DIV.
+This file only contains the dropdown list HTML — paste it into ONE Embed block.
+
+SITE SETTINGS → CUSTOM CODE → Footer (once):
+
+<link rel="stylesheet" href="https://raw.githubusercontent.com/Creative-Waco/webflow-add-to-calendar/main/add-to-calendar.css">
+<script src="https://raw.githubusercontent.com/Creative-Waco/webflow-add-to-calendar/main/add-to-calendar.js" defer></script>
+
+--------------------------------------------------------------------------------
+ON THE EVENT CMS TEMPLATE — CANVAS STRUCTURE (top → bottom, inside a Section etc.)
+
+1) DIV (wrapper)
+   • Combo class: cw-cal
+   • Position: relative (optional — stylesheet sets .cw-cal { position:relative })
+
+   Custom attributes on THIS div — Element settings → Custom attributes → Add.
+   For each row, ADD ATTRIBUTE NAME (left) then bind VALUE (right) to CMS:
+
+   data-cw-add-to-calendar     value: true
+                                (presence activates the script on this block)
+
+   data-cw-title               → CMS: Name
+   data-cw-start               → CMS: Start Date/Time
+   data-cw-end                 → CMS: End Date/Time
+   data-cw-location            → CMS: Location
+   data-cw-description         → CMS: Short Description
+   data-cw-uid-slug            → CMS: Slug
+   data-cw-url                 → bind “full URL” for this CMS item (permalink).
+                                In the bindings panel pick the field that outputs the
+                                live event page URL (wording varies: Full URL, etc.).
+                                If your site doesn’t expose it, omit this attribute.
+
+2) BUTTON (native Webflow Button block — style colors, radius, typography here)
+
+   Custom attributes:
+   data-cw-cal-trigger         value: true
+                                OR skip this and instead add combo class: cw-cal__trigger
+
+   aria-expanded               false
+   aria-haspopup               true
+
+   Set button label to plain text, e.g. “Add to calendar”.
+
+3) EMBED — paste ONLY the <ul>...</ul> block below (you may delete this comment block first).
+
+================================================================================
+-->
+
+<ul class="cw-cal__panel" role="menu">
+  <li role="none">
+    <a role="menuitem" data-cw-cal-link="google" href="#" target="_blank" rel="noopener noreferrer">Google Calendar</a>
+  </li>
+  <li role="none">
+    <a role="menuitem" data-cw-cal-link="outlook" href="#" target="_blank" rel="noopener noreferrer">Outlook (Microsoft 365)</a>
+  </li>
+  <li role="none">
+    <a role="menuitem" data-cw-cal-link="outlook-live" href="#" target="_blank" rel="noopener noreferrer">Outlook.com</a>
+  </li>
+  <li role="none">
+    <a role="menuitem" data-cw-cal-link="yahoo" href="#" target="_blank" rel="noopener noreferrer">Yahoo Calendar</a>
+  </li>
+  <li aria-hidden="true" class="cw-cal__sep"></li>
+  <li role="none">
+    <a role="menuitem" href="#" data-cw-cal-link="ics">Apple Calendar — download .ics</a>
+  </li>
+  <li class="cw-cal__hint">Works in Apple Calendar, Gmail app, and most desktop clients.</li>
+</ul>

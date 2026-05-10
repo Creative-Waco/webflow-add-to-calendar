@@ -8,7 +8,8 @@ Small static assets for the Event CMS template: **Google Calendar**, **Outlook**
 |------|------|
 | `add-to-calendar.js` | Widget (reads `data-cw-*` attributes, builds links + `.ics`) |
 | `add-to-calendar.css` | Optional default styles (scope: `.cw-cal-*`) |
-| `add-to-calendar-snippet.html` | HTML to paste into a Webflow Embed; bind attributes to CMS fields |
+| `add-to-calendar-snippet.html` | All-in-one HTML (embed-only workflow) |
+| **`webflow-events-calendar-setup.html`** | **Recommended for Webflow:** step-by-step comments + **only** the `<ul>` dropdown—use a native Webflow **Button** + CMS bindings on a parent **Div** |
 
 ## Use in Webflow
 

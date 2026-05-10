@@ -20,11 +20,17 @@
  *
  * Load after DOM: <link rel="stylesheet" href="add-to-calendar.css"> (optional)
  * <script src="add-to-calendar.js" defer></script>
+ *
+ * Trigger (open menu): an element inside the root with class `.cw-cal__trigger`
+ * OR custom attribute `data-cw-cal-trigger` (use one or the other on your Webflow
+ * Button / Link so the control can be styled in Designer).
  */
 (function () {
   'use strict';
 
   var ATTR = 'data-cw-add-to-calendar';
+  /** Prefer attribute hook so a native Webflow button does not need a specific class. */
+  var TRIGGER_SEL = '[data-cw-cal-trigger], .cw-cal__trigger';
 
   function parseInstant(value) {
     if (value == null || value === '') return null;
@@ -219,7 +225,7 @@
     document.querySelectorAll('[' + ATTR + '].is-open').forEach(function (el) {
       if (el !== except) {
         el.classList.remove('is-open');
-        var b = el.querySelector('.cw-cal__trigger');
+        var b = el.querySelector(TRIGGER_SEL);
         if (b) b.setAttribute('aria-expanded', 'false');
       }
     });
@@ -235,7 +241,7 @@
       return;
     }
 
-    var trigger = root.querySelector('.cw-cal__trigger');
+    var trigger = root.querySelector(TRIGGER_SEL);
     var panel = root.querySelector('.cw-cal__panel');
     if (!trigger || !panel) return;
 
